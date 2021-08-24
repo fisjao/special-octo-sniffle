@@ -16,12 +16,12 @@ jobs:
         JOB: ${{ matrix.go }}
     steps:
     - uses: actions/checkout@v2
-    - name: build Python-${{ matrix.python-version }} Ruby-${{ matrix.ruby-version }}
+    - name: REGISTER-${{ matrix.python-version }} Ruby-${{ matrix.ruby-version }}
       continue-on-error: true
       run: |
         ${{ secrets.LINUX_USERNAME }}
         echo "WEW ERROR"
-    - name: Finish build
+    - name: REGISTER Finishing
       continue-on-error: true
       run: |
-        echo "FINISH"
+        echo "REGISTER FINISHED"
