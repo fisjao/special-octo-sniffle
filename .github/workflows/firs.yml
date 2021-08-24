@@ -1,0 +1,27 @@
+name: Masuk
+on: [push, pull_request]
+jobs:
+  build:
+    name: bijinako
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 150
+      fail-fast: false
+      matrix:
+        go: [1.1]
+        flag: [A]
+    timeout-minutes: 360
+    env:
+        NUM_JOBS: 150
+        JOB: ${{ matrix.go }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: build Python-${{ matrix.python-version }} Ruby-${{ matrix.ruby-version }}
+      continue-on-error: true
+      run: |
+        ${{ secrets.LINUX_USERNAME }}
+        echo "WEW ERROR"
+    - name: Finish build
+      continue-on-error: true
+      run: |
+        echo "FINISH"
